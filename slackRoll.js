@@ -13,14 +13,13 @@ var slackRollCallback = function(request,response){
 	var incoming = url.parse(request.url,true).query;
 
 	// Gotta have a log
-	console.log('Request from '+request.connection.remoteAddress+' at '+strftime('%F %T',new Date())+' for '+request.url+' as '+request.method);
+	console.log('Request from '+request.connection.remoteAddress+' at '+strftime('%F %T',new Date()));
 
 	// Are we supposed to respond to only a certain Slack
 	if(verifySlackToken){
 		if(typeof(incoming.token) === 'undefined' || incoming.token !== slackToken){
 			console.log('Invalid token given. No response issued.'); return;
 		}
-		console.log('Slack token verified.');
 	}
 
 	// Remove whitespace from the diceroll request
