@@ -7,12 +7,14 @@ You type this:<br/>
 You get this:<br/>
 <img src="http://i.imgur.com/OctHF5Z.png"/><br/>
 
+<b>There is a known bug!</b><br/>
+All responses from the server come in as whispers. This will be fixed soon.
+
 <b>Installation and configuration</b><br/>
 1. Clone the repo.<br/>`git clone https://github.com/LegendaryLinux/slackroll.git`<br/><br/>
 2. Install the sole dependency<br/> `cd slackroll && npm install -g strftime`<br/><br/>
-3. Take a look inside `slackRoll.js`. You'll find three configuration options. Set them as you see fit.<br/>
+3. Take a look inside `slackRoll.js`. You'll find two configuration options. Set them as you see fit.<br/>
   `serverPort`: The port you want the server to listen on<br/>
-  `verifyServerToken`: Checks that the Slack token sent matches the one you specify. Can be `true` or `false`<br/>
   `slackToken`: The token associated with your Slack integration<br/><br/>
 4. Create a new integration for your Slack. You'll want a new Slash Command. Four settings are important here.
 <ul>
