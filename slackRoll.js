@@ -5,7 +5,6 @@ var strftime = require('strftime');
 
 // Global configuration
 var serverPort = 1570;
-var verifySlackToken = false;
 var slackToken = 'YOUR SLACK TOKEN HERE';
 
 var slackRollCallback = function(request,response){
@@ -16,7 +15,7 @@ var slackRollCallback = function(request,response){
 	console.log('Request from '+request.connection.remoteAddress+' at '+strftime('%F %T',new Date()));
 
 	// Are we supposed to respond to only a certain Slack
-	if(verifySlackToken){
+	if(typeof() !== 'undefined' && slackToken !== null && slackToken !== ''){
 		if(typeof(incoming.token) === 'undefined' || incoming.token !== slackToken){
 			console.log('Invalid token given. No response issued.'); return;
 		}
@@ -26,7 +25,7 @@ var slackRollCallback = function(request,response){
 	incoming.text = incoming.text.replace(/ /g,'');
 	
 	// Make sure this looke like an approptiate roll string
-	var regex = new RegExp('^\\d+d\\d+((\\+||\\-)\\d+)?$');
+	var regex = new RegExp('^\\d+d\\d+([+-]\\d+)?$');
 	if(regex.test(incoming.text) === false){
 		response.end('Your roll was not well formatted. Try something like *4d6-2*.');
 		return;
