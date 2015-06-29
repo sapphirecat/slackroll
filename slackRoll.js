@@ -5,7 +5,7 @@ var strftime = require('strftime');
 
 // Global configuration
 var serverPort = 1570;
-var slackToken = 'YOUR SLACK TOKEN HERE';
+var slackToken = null;
 
 var slackRollCallback = function(request,response){
 	// Parse the incoming URL
@@ -15,7 +15,7 @@ var slackRollCallback = function(request,response){
 	console.log('Request from '+request.connection.remoteAddress+' at '+strftime('%F %T',new Date()));
 
 	// Are we supposed to respond to only a certain Slack
-	if(typeof() !== 'undefined' && slackToken !== null && slackToken !== ''){
+	if(typeof(slackToken) !== 'undefined' && slackToken !== null && slackToken !== ''){
 		if(typeof(incoming.token) === 'undefined' || incoming.token !== slackToken){
 			console.log('Invalid token given. No response issued.'); return;
 		}
