@@ -2,10 +2,12 @@
 var http = require('http');
 var url = require('url');
 var strftime = require('strftime');
+var httpInterface = require('request');
 
 // Global configuration
 var serverPort = 1570;
 var slackToken = null;
+var webhookUrl = 'YOUR WEBHOOK URL HERE';
 
 var slackRollCallback = function(request,response){
 	// Parse the incoming URL
@@ -90,8 +92,31 @@ var slackRollCallback = function(request,response){
 	if(minus > 0) resultString = resultString+'- '+minus+' ';
 	resultString = resultString+'= '+modifiedTotal;
 	
+	// We can't respond to a private group with a webhook, unfortunately
+	if(incoming.channel_name === 'privategroup'){
+		response.end(resultString); return;
+	}
+
 	// Send the response back to Slack
-	response.end(resultString);
+	var returnPayload = {
+		channel: '#'+incoming.channel_name,
+		username: 'slackRoll',
+		icon_emoji: ':game_die:',
+		text: resultString,
+	};
+	
+	// Send a POST to the webhook
+	httpInterface({
+		method: 'POST',
+		uri: webhookUrl,
+		body: JSON.stringify(returnPayload)
+	},function(httpError, httpResponse, httpBody){
+		if(httpResponse.statusCode < 200 || httpResponse.statusCode > 299){
+			console.log('httpInterface error:');
+			console.log(JSON.stringify(httpResponse));
+			return;
+		}
+	})
 }
 
 var slackRollServer = http.createServer(slackRollCallback);
