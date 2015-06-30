@@ -1,29 +1,34 @@
 # slackroll
-<b>SlackRoll is a diceroller designed for integration with Slack.</b><br/>
-<br/>
-You type this:<br/>
-<img src="http://i.imgur.com/8yUrbeT.png"/><br/>
+**SlackRoll is a diceroller designed for integration with Slack.**
 
-You get this:<br/>
-<img src="http://i.imgur.com/OctHF5Z.png"/><br/>
+You type this:  
+<img src="http://i.imgur.com/p8jSZT5.png"/>
 
-<b>There is a known bug!</b><br/>
-All responses from the server come in as whispers. This will be fixed soon.
+You get this:  
+<img src="http://i.imgur.com/noJxTba.png"/>  
 
-<b>Installation and configuration</b><br/>
-1. Clone the repo.<br/>`git clone https://github.com/LegendaryLinux/slackroll.git`<br/><br/>
-2. Install the sole dependency<br/> `cd slackroll && npm install -g strftime`<br/><br/>
-3. Take a look inside `slackRoll.js`. You'll find two configuration options. Set them as you see fit.<br/>
-  `serverPort`: The port you want the server to listen on<br/>
-  `slackToken`: The token associated with your Slack integration<br/><br/>
-4. Create a new integration for your Slack. You'll want a new Slash Command. Four settings are important here.
-<ul>
-  <li><b>Command</b>: This should be what you want to use to tell Slack to listen for a diceroll. You can use whatever you want.</li>
-  <li><b>URL</b>: This is the endpoint where your Node.js server will be listening for requests. If you're on port 1500, this should be: http://yourserver.com:1500/. Note that the slash after the port number is mandatory for slack to send a GET request.</li>
-  <li><b>Method</b>: This must be GET.</li>
-  <li><b>Token</b>: This is the token referenced above. You don't need to do anything with it unless you want to make sure only your team uses the diceroller.</li>
-</ul><br/>
-5. Once the integration is set up, just start the server.<br/>
-`node slackRoll.js`<br/><br/>
+**Installation and configuration**  
+
+1. Clone the repo.  
+`git clone https://github.com/LegendaryLinux/slackroll.git`  
+
+2. Install the two dependencies  
+`cd slackroll && npm install -g strftime && npm install -g request`  
+
+3. Create a new integration for your Slack. You'll want a new Slash Command. Four settings are important here.  
+  a. **Command**: The command you specify to Slack to listen for a diceroll.  
+  b. **URL**: Your server's endpoint. Ex: http://yourdomain.com:1500/ (assuming you use port 1500)  
+  c. **Method**: This must be GET.  
+  d. **Token**: Make note of this. You cna optionally use it for `slackToken` later.
+
+4. Create a second integration for your Slack. This one is an incoming webhook. From there, you'll want to copy down the webhook url. The options here are mostly irrelevant, as slackRoll overrides them anyway. Just save the integration.
+
+5. Take a look inside `slackRoll.js`. You'll find three configuration options. Set them accordingly:  
+`serverPort`: The port you want the server to listen on  
+`slackToken`: The token associated with your Slack integration (optional)  
+`webhookUrl`: The webhook url associated with your Slack integration  
+
+6. Once the integration is set up, just start the server.  
+`node slackRoll.js`
 
 That's it. Enjoy your dice!
