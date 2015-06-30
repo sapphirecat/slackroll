@@ -25,8 +25,8 @@ You get this:
 
 5. Take a look inside `slackRoll.js`. You'll find three configuration options. Set them accordingly:  
 `serverPort`: The port you want the server to listen on  
-`slackToken`: The token associated with your Slack integration (optional)  
-`webhookUrl`: The webhook url associated with your Slack integration  
+`slackToken`: The token associated with your slash command (optional)  
+`webhookUrl`: The webhook url associated with your incoming webhook
 
 6. Once the integration is set up, just start the server.  
 `node slackRoll.js`
