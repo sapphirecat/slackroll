@@ -16,10 +16,10 @@ You get this:
 `cd slackroll && npm install -g strftime && npm install -g request`  
 
 3. Create a new integration for your Slack. You'll want a new Slash Command. Four settings are important here.  
-  a. **Command**: The command you specify to Slack to listen for a diceroll.  
-  b. **URL**: Your server's endpoint. Ex: http://yourdomain.com:1500/ (assuming you use port 1500)  
-  c. **Method**: This must be GET.  
-  d. **Token**: Make note of this. You cna optionally use it for `slackToken` later.
+  a. *Command*: The command you specify to Slack to listen for a diceroll.  
+  b. *URL*: Your server's endpoint. Ex: http://yourdomain.com:1500/ (assuming you use port 1500)  
+  c. *Method*: This must be GET.  
+  d. *Token*: Make note of this. You cna optionally use it for `slackToken` later.
 
 4. Create a second integration for your Slack. This one is an incoming webhook. From there, you'll want to copy down the webhook url. The options here are mostly irrelevant, as slackRoll overrides them anyway. Just save the integration.
 
