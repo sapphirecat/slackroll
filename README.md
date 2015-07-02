@@ -1,5 +1,5 @@
 # slackroll
-**SlackRoll is a diceroller designed for integration with Slack.**
+**slackRoll is a diceroller designed for integration with Slack. This is a Node.js project.**
 
 You type this:  
 <img src="http://i.imgur.com/p8jSZT5.png"/>
