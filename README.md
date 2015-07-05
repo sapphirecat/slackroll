@@ -33,6 +33,5 @@ You get this:
 
 That's it. Enjoy your dice!
 
-<hr/>
 <h2>PHP Version</h2>
 A PHP version of this project is available at https://github.com/sapphirecat/slackroll.
