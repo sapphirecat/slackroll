@@ -7,7 +7,7 @@ You type this:
 You get this:  
 <img src="http://i.imgur.com/noJxTba.png"/>  
 
-<h2>Installation and configuration</h2>
+# Installation and configuration
 
 1. Clone the repo.  
 `git clone https://github.com/LegendaryLinux/slackroll.git`  
@@ -33,5 +33,5 @@ You get this:
 
 That's it. Enjoy your dice!
 
-<h2>PHP Version</h2>
+# PHP Version
 A PHP version of this project is available at https://github.com/sapphirecat/slackroll.
