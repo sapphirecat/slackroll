@@ -3,6 +3,8 @@ require_once implode(DIRECTORY_SEPARATOR, [__DIR__, 'vendor', 'autoload.php']);
 
 use \GuzzleHttp\Client;
 use \GuzzleHttp\Exception\RequestException;
+use \GuzzleHttp\Handler\CurlMultiHandler;
+use \GuzzleHttp\HandlerStack;
 
 use \Monolog\Logger;
 use \Monolog\Formatter\LineFormatter;
@@ -41,12 +43,19 @@ $http = new Server($socket);
 // since we can't push an event loop to use into Guzzle, we have to poll it.
 // interval of 0 pegs the CPU; since we're using this only for errors,
 // responsiveness isn't a big deal, and we'll minimize wakeups instead.
-$promiseQueue = \GuzzleHttp\Promise\queue();
-$ev->addPeriodicTimer(4.0, [$promiseQueue, 'run']);
+//
+// Guzzle<->React bridge details found at:
+// http://stephencoakley.com/2015/06/11/integrating-guzzle-6-asynchronous-requests-with-reactphp
+$guzzleHandler = new CurlMultiHandler();
+$pollFunction = function () {
+	$this->tick();
+};
+$ev->addPeriodicTimer(0.3, \Closure::bind($pollFunction, $guzzleHandler, $guzzleHandler));
+unset($pollFunction);
 
 
 // HTTP responder
-$responder = function ($request, $response) use ($ev, $log, $slackToken, $webhookUrl) {
+$responder = function ($request, $response) use ($ev, $log, $slackToken, $webhookUrl, $guzzleHandler) {
 	// Parse the incoming URL
 	$incoming = $request->getQuery();
 	if (! isset($incoming['token'])) {
@@ -129,7 +138,10 @@ $responder = function ($request, $response) use ($ev, $log, $slackToken, $webhoo
 	);
 
 	// Send a POST to the webhook in maximum wtf style (the client has json?)
-	$client = new Client(['json' => $returnPayload]);
+	$client = new Client(array( # TODO: move creation outside of request loop
+				'json' => $returnPayload,
+				'handler' => HandlerStack::Create($guzzleHandler),
+				));
 	$promise = $client->postAsync($webhookUrl);
 	$promise->then(
 			null, // we don't care about success
