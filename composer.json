@@ -1,6 +1,8 @@
 {
 	"name": "sapphirecat/slackroll",
 	"require": {
+		"ext-curl": "*",
+
 		"guzzlehttp/guzzle": "~6.0",
 		"guzzlehttp/psr7": "^1.1.0",
 		"monolog/monolog": "^1.14.0",
