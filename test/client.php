@@ -1,5 +1,5 @@
 <?php
-require_once implode(DIRECTORY_SEPARATOR, [__DIR__, 'vendor', 'autoload.php']);
+require_once implode(DIRECTORY_SEPARATOR, [dirname(__DIR__), 'vendor', 'autoload.php']);
 
 use \GuzzleHttp\Client;
 
