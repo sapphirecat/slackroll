@@ -1,4 +1,4 @@
-# slackroll
+# slackRoll
 **slackRoll is a diceroller designed for integration with Slack. This is a Node.js project.**
 
 You type this:  
@@ -7,7 +7,7 @@ You type this:
 You get this:  
 <img src="http://i.imgur.com/noJxTba.png"/>  
 
-**Installation and configuration**  
+<h2>Installation and configuration</h2>
 
 1. Clone the repo.  
 `git clone https://github.com/LegendaryLinux/slackroll.git`  
@@ -32,3 +32,7 @@ You get this:
 `node slackRoll.js`
 
 That's it. Enjoy your dice!
+
+<hr/>
+<h2>PHP Version</h2>
+A PHP version of this project is available at https://github.com/sapphirecat/slackroll.
