@@ -12,7 +12,7 @@ You get this:
 1. Clone the repo.  
 `git clone -b php https://github.com/sapphirecat/slackroll.git`  
 
-2. Install the two dependencies  
+2. Install the dependencies  
 `cd slackroll && composer install`  
 
 3. Create a new integration for your Slack. You'll want a new Slash Command. Four settings are important here.  
