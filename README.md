@@ -33,8 +33,7 @@ You get this:
 
 That's it. Enjoy your dice!
 
-## PHP Edition
+## PHP vs. NodeJS
 
-The `php` branch of this repo is the React PHP edition by sapphirecat.  For
-the original nodejs version, see the `master` branch, forked from and tracking
-[/LegendaryLinux/slackroll](https://github.com/LegendaryLinux/slackroll).
+The `php` branch of this repo is a [React PHP](http://reactphp.org/) port by [sapphirecat](https://github.com/sapphirecat).
+For the original [nodejs](https://nodejs.org/) version, see the `master` branch, forked from and tracking [LegendaryLinux/slackroll](https://github.com/LegendaryLinux/slackroll).
