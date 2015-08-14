@@ -19,7 +19,7 @@ You get this:
   a. *Command*: The command you specify to Slack to listen for a diceroll.  
   b. *URL*: Your server's endpoint. Ex: http://yourdomain.com:1500/ (assuming you use port 1500)  
   c. *Method*: This must be GET.  
-  d. *Token*: Make note of this. You cna optionally use it for `slackToken` later.
+  d. *Token*: Make note of this. You can optionally use it for `slackToken` later.
 
 4. Create a second integration for your Slack. This one is an incoming webhook. From there, you'll want to copy down the webhook url. The options here are mostly irrelevant, as slackRoll overrides them anyway. Just save the integration.
 
